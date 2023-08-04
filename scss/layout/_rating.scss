@@ -1,0 +1,122 @@
+@use '../abstract' as *;
+@use '../components' as *;
+
+body{
+    background-color:$primary-color;
+    font-family: $roboto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .rating, .thank-you{
+        width: min(100%, 22.875rem);
+        background-color: $secondary-color;
+        border-radius: 1rem;
+        padding: 1.8em;
+    }
+    .rating{
+        transition: opacity ease 300ms;
+
+        & > div:first-child{
+            @include circle();
+            margin-bottom: 1rem;
+        }
+
+        & > div:nth-child(2){
+           @extend %card-text;
+        }
+
+        & > div:nth-child(3){
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-block: 1.4rem;
+
+            div{
+                @include circle();
+                transition: ease 300ms;
+                cursor: pointer;
+
+                & > a{
+                    color: $grey-lighter;
+                    font-weight: 500;
+                    text-decoration: none;
+                }
+
+                &:hover{
+                    background-color: $accent-color;
+                    a{
+                        color: $white;
+                    }
+                }
+            }
+            
+        }
+        button{
+            cursor: pointer;
+            border: none;
+            outline: none;
+            width: 100%;
+            padding: .5em .7em;
+            border-radius: 2rem;
+            background-color: $accent-color;
+            color: $white;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+            transition: ease 300ms;
+        
+             &:hover{
+                background-color: $white;
+                color: $accent-color;
+             }
+        }
+    }
+    .thank-you{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: -1;
+        opacity: 0;
+        transition: all ease 300ms;
+
+        & > div:first-child{
+            width: min(100%, 7rem);
+            margin-inline: auto;
+
+            img{
+                width: 100%;
+            }
+        }
+
+        & > p{
+            font-size: clamp(1rem,2vw, 1.1rem);
+            color: $accent-dark;
+            background-color: $grey-dark;
+            text-align: center;
+            width: fit-content;
+            margin: 2rem auto;
+            padding: .4em .8em;
+            border-radius: 2rem;
+        }
+
+        & > div:last-child{
+            @extend %card-text;
+            text-align: center;
+        }
+    }
+    .attribution { 
+        margin-top: 1.4rem;
+        font-size: clamp(.9rem, 2vw, 1rem); 
+        text-align: center; 
+        color: $white;
+
+        a { 
+            color: hsl(228, 45%, 44%); 
+        }
+    }
+    
+}
+
